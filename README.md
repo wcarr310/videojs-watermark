@@ -14,13 +14,13 @@ npm install --save videojs-watermark
 
 ## Configuration
 
-** image: Required ** The URL to the image to be used as the watermark.
+**image: Required** The URL to the image to be used as the watermark.
 
-** position: ** The location to place the watermark (top-left, top-right, bottom-left, bottom-right). Defaults to 'top-right'.
+**position:** The location to place the watermark (top-left, top-right, bottom-left, bottom-right). Defaults to 'top-right'.
 
-** fadeTime: ** The amount of time in milliseconds for the initial watermark fade. Defaults to 3000.
+**fadeTime:** The amount of time in milliseconds for the initial watermark fade. Defaults to 3000.
 
-** url: ** A url to be linked to from the watermark. If the user clicks the watermark the video will be paused and the link will open in a new window.
+**url:** A url to be linked to from the watermark. If the user clicks the watermark the video will be paused and the link will open in a new window.
 
 ## Usage
 
