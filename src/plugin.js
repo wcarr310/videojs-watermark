@@ -1,7 +1,12 @@
 import videojs from 'video.js';
 
 // Default options for the plugin.
-const defaults = {};
+const defaults = {
+  position: 'top-right',
+  fadeTime: 3000,
+  url: undefined,
+  image: undefined
+};
 
 /**
  * Function to invoke when the player is ready.
@@ -16,6 +21,44 @@ const defaults = {};
  */
 const onPlayerReady = (player, options) => {
   player.addClass('vjs-watermark');
+
+  // if there is no image set just exit
+  if (!options.image) {
+    return;
+  }
+  // Add a div and img tag
+  const videoEl = player.el();
+  const div = document.createElement('div');
+  const img = document.createElement('img');
+
+  div.id = 'vjs-watermark';
+  div.classList.add('vjs-watermark-content');
+  div.classList.add(`vjs-watermark-${options.position}`);
+  img.src = options.image;
+
+  // if a url is provided make the image link to that URL.
+  if (options.url) {
+    const a = document.createElement('a');
+
+    a.href = '#';
+    // if the user clicks the link pause and open a new window
+    a.onclick = (e) => {
+      e.preventDefault();
+      player.pause();
+      window.open(options.url);
+    };
+    a.appendChild(img);
+    div.appendChild(a);
+  } else {
+    div.appendChild(img);
+  }
+  videoEl.appendChild(div);
+
+  player.on('play', () => {
+    setTimeout(
+      () => document.getElementById('vjs-watermark').classList.add('vjs-watermark-fade'),
+    options.fadeTime);
+  });
 };
 
 /**

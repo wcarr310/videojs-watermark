@@ -32,7 +32,8 @@
   },
   "keywords": [
     "videojs",
-    "videojs-plugin"
+    "videojs-plugin",
+    "watermark"
   ],
   "author": "Brooks Lyrette <brooks@dotsub.com>",
   "license": "Apache-2.0",

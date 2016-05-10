@@ -1,9 +1,42 @@
+@mixin transition($args...) {
+  -webkit-transition: $args;
+  -moz-transition: $args;
+  -ms-transition: $args;
+  -o-transition: $args;
+  transition: $args;
+}
+
 // Sass for videojs-watermark
-
 .video-js {
-
-  // This class is added to the video.js element by the plugin by default.
   &.vjs-watermark {
     display: block;
+    padding: 5px;
+  }
+  .vjs-watermark-content {
+    opacity: 0.99;
+    position: absolute;
+    @include transition(visibility 1.0s, opacity 1.0s);
+  }
+
+  // pre-defined positions
+  .vjs-watermark-top-right {
+    right: 0;
+  }
+  .vjs-watermark-top-left {
+    left: 0;
+  }
+  // bottom set to 30px to account for controlbar
+  .vjs-watermark-bottom-right {
+    right: 0;
+    bottom: 30px;
+  }
+  .vjs-watermark-bottom-left {
+    left: 0;
+    bottom: 30px;
+  }
+
+  //fade out when the user is not active and the video is playing.
+  &.vjs-user-inactive.vjs-playing .vjs-watermark-fade {
+   opacity: 0;
   }
 }
