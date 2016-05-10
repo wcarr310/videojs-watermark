@@ -1,0 +1,9 @@
+// Sass for videojs-watermark
+
+.video-js {
+
+  // This class is added to the video.js element by the plugin by default.
+  &.vjs-watermark {
+    display: block;
+  }
+}
