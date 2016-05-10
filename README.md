@@ -57,7 +57,7 @@ var player = videojs('my-video');
 player.watermark();
 ```
 
-### Browserify ES^
+### Browserify ES6
 
 When using with Browserify, install videojs-watermark via npm and `import` the plugin as you would any other module.
 
