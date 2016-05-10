@@ -30,7 +30,7 @@ const setupWatermark = (player, options) => {
   if (options.url) {
     const a = document.createElement('a');
 
-    a.href = '#';
+    a.href = options.url;
     // if the user clicks the link pause and open a new window
     a.onclick = (e) => {
       e.preventDefault();
