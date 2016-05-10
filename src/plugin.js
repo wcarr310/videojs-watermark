@@ -26,6 +26,18 @@ const onPlayerReady = (player, options) => {
   if (!options.image) {
     return;
   }
+  setupWatermark(player, options);
+  player.on('play', () => fadeWatermark(options));
+};
+
+/**
+ * Sets up the div, img and optional a tags for the plugin.
+ *
+ * @function setupWatermark
+ * @param    {Player} player
+ * @param    {Object} [options={}]
+ */
+const setupWatermark = (player, options) => {
   // Add a div and img tag
   const videoEl = player.el();
   const div = document.createElement('div');
@@ -53,12 +65,18 @@ const onPlayerReady = (player, options) => {
     div.appendChild(img);
   }
   videoEl.appendChild(div);
+};
 
-  player.on('play', () => {
-    setTimeout(
-      () => document.getElementById('vjs-watermark').classList.add('vjs-watermark-fade'),
-    options.fadeTime);
-  });
+/**
+ * Fades the watermark image.
+ *
+ * @function fadeWatermark
+ * @param    {Object} [options={fadeTime: 'The number of milliseconds before the inital watermark fade out'}]
+ */
+const fadeWatermark = (options) => {
+  setTimeout(
+    () => document.getElementById('vjs-watermark').classList.add('vjs-watermark-fade'),
+  options.fadeTime);
 };
 
 /**

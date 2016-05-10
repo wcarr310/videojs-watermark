@@ -10,11 +10,11 @@
 .video-js {
   &.vjs-watermark {
     display: block;
-    padding: 5px;
   }
   .vjs-watermark-content {
     opacity: 0.99;
     position: absolute;
+    padding: 5px;
     @include transition(visibility 1.0s, opacity 1.0s);
   }
 
