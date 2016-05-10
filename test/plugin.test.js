@@ -56,3 +56,105 @@ QUnit.test('registers itself with video.js', function(assert) {
     'the plugin adds a class to the player'
   );
 });
+
+QUnit.test('does not add image if not configued', function(assert) {
+  assert.expect(2);
+
+  assert.strictEqual(
+    Player.prototype.watermark,
+    plugin,
+    'videojs-watermark plugin was registered'
+  );
+
+  this.player.watermark();
+
+  // Tick the clock forward enough to trigger the player to be "ready".
+  this.clock.tick(1);
+
+  assert.equal(
+    0,
+    this.player.contentEl().getElementsByClassName('vjs-watermark-content').length,
+    'The plugin should not add content to the player if no image is configued'
+  );
+});
+
+QUnit.test('does add image with correct path', function(assert) {
+  const imageUrl = '/images/foo.png';
+
+  assert.expect(4);
+
+  assert.strictEqual(
+    Player.prototype.watermark,
+    plugin,
+    'videojs-watermark plugin was registered'
+  );
+
+  this.player.watermark({ image: imageUrl });
+
+  // Tick the clock forward enough to trigger the player to be "ready".
+  this.clock.tick(1);
+
+  const imageContainer = this.player.contentEl()
+                              .getElementsByClassName('vjs-watermark-content')[0];
+  const image = imageContainer.getElementsByTagName('img')[0];
+
+  assert.ok(
+    imageContainer,
+    'The plugin should add content to the player if an image is configued'
+  );
+
+  assert.ok(
+    image.src.endsWith(imageUrl),
+    'This is not the correct image'
+  );
+
+  assert.equal(
+    0,
+    imageContainer.getElementsByTagName('a').length,
+    'The plugin should not add a link unless there is a configured URL'
+  );
+});
+
+QUnit.test('does add a link when URL is configured', function(assert) {
+  const imageUrl = '/images/foo.png';
+  const linkUrl = '/some/path';
+
+  assert.expect(5);
+
+  assert.strictEqual(
+    Player.prototype.watermark,
+    plugin,
+    'videojs-watermark plugin was registered'
+  );
+
+  this.player.watermark({ image: imageUrl, url: linkUrl });
+
+  // Tick the clock forward enough to trigger the player to be "ready".
+  this.clock.tick(1);
+
+  const imageContainer = this.player.contentEl()
+                              .getElementsByClassName('vjs-watermark-content')[0];
+  const image = imageContainer.getElementsByTagName('img')[0];
+  const link = imageContainer.getElementsByTagName('a')[0];
+
+  assert.ok(
+    imageContainer,
+    'The plugin should add content to the player if an image is configued'
+  );
+
+  assert.ok(
+    image.src.endsWith(imageUrl),
+    'This is not the correct image'
+  );
+
+  assert.equal(
+    1,
+    imageContainer.getElementsByTagName('a').length,
+    'The plugin should add a link since the URL is configued'
+  );
+
+  assert.ok(
+    link.href.endsWith(linkUrl),
+    'This is not the correct link'
+  );
+});
