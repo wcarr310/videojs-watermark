@@ -2,13 +2,25 @@
 
 # videojs-watermark
 
-Adds a watermark image the video player
+Adds a watermark image the video player. After the initial 'fadeTime' the watermark will be shown when the video players controls are shown. This also provides the ability to use the watermark as a link.
+
+![Player Preview](https://cloud.githubusercontent.com/assets/1881100/15156352/9be2dac6-16b4-11e6-9981-d63e1421bac2.png)
 
 ## Installation
 
 ```sh
 npm install --save videojs-watermark
 ```
+
+## Configuration
+
+** image: Required ** The URL to the image to be used as the watermark.
+
+** position: ** The location to place the watermark (top-left, top-right, bottom-left, bottom-right). Defaults to 'top-right'.
+
+** fadeTime: ** The amount of time in milliseconds for the initial watermark fade. Defaults to 3000.
+
+** url: ** A url to be linked to from the watermark. If the user clicks the watermark the video will be paused and the link will open in a new window.
 
 ## Usage
 
@@ -42,6 +54,22 @@ require('videojs-watermark');
 
 var player = videojs('my-video');
 
+player.watermark();
+```
+
+### Browserify ES^
+
+When using with Browserify, install videojs-watermark via npm and `import` the plugin as you would any other module.
+
+```js
+import videojs from 'video.js';
+
+// The actual plugin function is exported by this module, but it is also
+// attached to the `Player.prototype`; so, there is no need to assign it
+// to a variable.
+import 'videojs-watermark';
+
+const player = videojs('my-video');
 player.watermark();
 ```
 
