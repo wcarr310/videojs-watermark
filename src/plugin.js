@@ -9,28 +9,6 @@ const defaults = {
 };
 
 /**
- * Function to invoke when the player is ready.
- *
- * This is a great place for your plugin to initialize itself. When this
- * function is called, the player will have its DOM and child components
- * in place.
- *
- * @function onPlayerReady
- * @param    {Player} player
- * @param    {Object} [options={}]
- */
-const onPlayerReady = (player, options) => {
-  player.addClass('vjs-watermark');
-
-  // if there is no image set just exit
-  if (!options.image) {
-    return;
-  }
-  setupWatermark(player, options);
-  player.on('play', () => fadeWatermark(options));
-};
-
-/**
  * Sets up the div, img and optional a tags for the plugin.
  *
  * @function setupWatermark
@@ -71,12 +49,36 @@ const setupWatermark = (player, options) => {
  * Fades the watermark image.
  *
  * @function fadeWatermark
- * @param    {Object} [options={fadeTime: 'The number of milliseconds before the inital watermark fade out'}]
+ * @param    {Object} [options={
+ *                  fadeTime:
+ *                  'The number of milliseconds before the inital watermark fade out'}]
  */
 const fadeWatermark = (options) => {
   setTimeout(
     () => document.getElementById('vjs-watermark').classList.add('vjs-watermark-fade'),
   options.fadeTime);
+};
+
+/**
+ * Function to invoke when the player is ready.
+ *
+ * This is a great place for your plugin to initialize itself. When this
+ * function is called, the player will have its DOM and child components
+ * in place.
+ *
+ * @function onPlayerReady
+ * @param    {Player} player
+ * @param    {Object} [options={}]
+ */
+const onPlayerReady = (player, options) => {
+  player.addClass('vjs-watermark');
+
+  // if there is no image set just exit
+  if (!options.image) {
+    return;
+  }
+  setupWatermark(player, options);
+  player.on('play', () => fadeWatermark(options));
 };
 
 /**
