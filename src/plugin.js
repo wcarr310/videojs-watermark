@@ -78,6 +78,12 @@ const onPlayerReady = (player, options) => {
     return;
   }
   setupWatermark(player, options);
+
+  // Setup watermark autofade
+  if (options.fadeTime === null) {
+    return;
+  }
+
   player.on('play', () => fadeWatermark(options));
 };
 
