@@ -87,7 +87,7 @@ require(['video.js', 'videojs-watermark'], function(videojs) {
 
 ## License
 
-Apache-2.0. Copyright (c) Brooks Lyrette &lt;brooks@dotsub.com&gt;
+Apache-2.0. Copyright (c) Dotsub &lt;dev@dotsub.com&gt;
 
 
 [videojs]: http://videojs.com/
