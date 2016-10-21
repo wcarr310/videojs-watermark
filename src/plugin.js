@@ -21,7 +21,6 @@ const setupWatermark = (player, options) => {
   const div = document.createElement('div');
   const img = document.createElement('img');
 
-  div.id = 'vjs-watermark';
   div.classList.add('vjs-watermark-content');
   div.classList.add(`vjs-watermark-${options.position}`);
   img.src = options.image;

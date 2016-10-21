@@ -81,7 +81,7 @@ QUnit.test('does not add image if not configued', function(assert) {
 QUnit.test('does add image with correct path', function(assert) {
   const imageUrl = '/images/foo.png';
 
-  assert.expect(4);
+  assert.expect(5);
 
   assert.strictEqual(
     Player.prototype.watermark,
@@ -113,13 +113,19 @@ QUnit.test('does add image with correct path', function(assert) {
     imageContainer.getElementsByTagName('a').length,
     'The plugin should not add a link unless there is a configured URL'
   );
+
+  assert.equal(
+    imageContainer.id,
+    '',
+    'the plugin doesn\'t add an ID to image container'
+  );
 });
 
 QUnit.test('does add a link when URL is configured', function(assert) {
   const imageUrl = '/images/foo.png';
   const linkUrl = '/some/path';
 
-  assert.expect(5);
+  assert.expect(6);
 
   assert.strictEqual(
     Player.prototype.watermark,
@@ -156,5 +162,11 @@ QUnit.test('does add a link when URL is configured', function(assert) {
   assert.ok(
     link.href.endsWith(linkUrl),
     'This is not the correct link'
+  );
+
+  assert.equal(
+    imageContainer.id,
+    '',
+    'the plugin doesn\'t add an ID to image container'
   );
 });
