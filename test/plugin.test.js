@@ -180,6 +180,7 @@ QUnit.test('fades out after player is started', function(assert) {
 
   // WHEN
   this.player.trigger('play');
+  this.clock.tick(10);
 
   // THEN
   const imageContainer = this.player.contentEl()
