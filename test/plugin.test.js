@@ -170,3 +170,20 @@ QUnit.test('does add a link when URL is configured', function(assert) {
     'the plugin doesn\'t add an ID to image container'
   );
 });
+
+QUnit.test('fades out after player is started', function(assert) {
+  // GIVEN
+  const imageUrl = '/images/foo.png';
+
+  this.player.watermark({ image: imageUrl, fadeTime: 1 });
+  this.clock.tick(1);
+
+  // WHEN
+  this.player.trigger('play');
+
+  // THEN
+  const imageContainer = this.player.contentEl()
+    .getElementsByClassName('vjs-watermark-content')[0];
+
+  assert.ok(imageContainer.classList.contains('vjs-watermark-fade'));
+});

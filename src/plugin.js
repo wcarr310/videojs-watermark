@@ -54,8 +54,10 @@ const setupWatermark = (player, options) => {
  */
 const fadeWatermark = (options) => {
   setTimeout(
-    () => document.getElementById('vjs-watermark').classList.add('vjs-watermark-fade'),
-  options.fadeTime);
+    () => document.getElementsByClassName('vjs-watermark-content')[0]
+      .classList.add('vjs-watermark-fade'),
+    options.fadeTime
+  );
 };
 
 /**
