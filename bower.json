@@ -11,7 +11,7 @@
     "src/plugin.js",
     "src/plugin.scss"
   ],
-  "moduleType": "es5",
+  "moduleType": "es6",
   "name": "videojs-watermark",
   "version": "1.0.0"
 }
