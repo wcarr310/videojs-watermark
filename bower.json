@@ -1,0 +1,18 @@
+{
+  "author": "Brooks Lyrette <brooks@dotsub.com>",
+  "homepage": "https://github.com/dotsub/videojs-watermark",
+  "keywords": [
+    "videojs",
+    "videojs-plugin",
+    "watermark"
+  ],
+  "license": "Apache-2.0",
+  "main": [
+    "src/plugin.js",
+    "src/plugin.scss"
+  ],
+  "moduleType": "es5",
+  "name": "videojs-watermark",
+  "version": "1.0.0"
+}
+
