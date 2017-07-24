@@ -107,7 +107,7 @@ const watermark = function(options) {
 };
 
 // Register the plugin with video.js.
-videojs.plugin('watermark', watermark);
+videojs.registerPlugin('watermark', watermark);
 
 // Include the version number.
 watermark.VERSION = '__VERSION__';

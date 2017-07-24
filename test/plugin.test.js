@@ -41,8 +41,8 @@ QUnit.test('registers itself with video.js', function(assert) {
   assert.expect(2);
 
   assert.strictEqual(
-    Player.prototype.watermark,
-    plugin,
+    typeof Player.prototype.watermark,
+    'function',
     'videojs-watermark plugin was registered'
   );
 
@@ -61,8 +61,8 @@ QUnit.test('does not add image if not configued', function(assert) {
   assert.expect(2);
 
   assert.strictEqual(
-    Player.prototype.watermark,
-    plugin,
+    typeof Player.prototype.watermark,
+    'function',
     'videojs-watermark plugin was registered'
   );
 
@@ -84,8 +84,8 @@ QUnit.test('does add image with correct path', function(assert) {
   assert.expect(5);
 
   assert.strictEqual(
-    Player.prototype.watermark,
-    plugin,
+    typeof Player.prototype.watermark,
+    'function',
     'videojs-watermark plugin was registered'
   );
 
@@ -128,8 +128,8 @@ QUnit.test('does add a link when URL is configured', function(assert) {
   assert.expect(6);
 
   assert.strictEqual(
-    Player.prototype.watermark,
-    plugin,
+    typeof Player.prototype.watermark,
+    'function',
     'videojs-watermark plugin was registered'
   );
 

@@ -13,14 +13,17 @@
   </video>
   <ul>
     <li><a href="/test/">Run unit tests in browser.</a></li>
-    
+
   </ul>
   <script src="/node_modules/video.js/dist/video.js"></script>
   <script src="/dist/videojs-watermark.js"></script>
   <script>
     (function(window, videojs) {
       var player = window.player = videojs('videojs-watermark-player');
-      player.watermark();
+      player.watermark({
+        image: 'https://dotsub.com/static/players/beta/player-logo.png',
+        url: 'https://dotsub.com'
+      });
     }(window, window.videojs));
   </script>
 </body>
