@@ -1,6 +1,6 @@
 {
   "name": "videojs-watermark",
-  "version": "1.0.1",
+  "version": "2.0.0",
   "description": "Adds a watermark image the video player",
   "repository": "https://github.com/dotsub/videojs-watermark",
   "main": "es5/plugin.js",
