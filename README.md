@@ -1,3 +1,5 @@
+**THIS REPOSITORY IS NOT MAINTAINER ANYMORE!** If you are interested in maintaining/owning it, please write to dev@dotsub.com.
+
 [![Build Status](https://travis-ci.org/dotsub/videojs-watermark.svg?branch=master)](https://travis-ci.org/dotsub/videojs-watermark) [![npm version](https://badge.fury.io/js/videojs-watermark.svg)](https://badge.fury.io/js/videojs-watermark)
 
 # videojs-watermark
